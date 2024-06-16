@@ -20,10 +20,10 @@ Controller, Service, Entity, DTO 레이어에 맞는 단위 테스트 작성하�
 
 ## 필수 구현 기능
 
-- [ ] AOP 추가하기
-  - [ ] 모든 API(Controller)가 호출될 때, Request 정보(Request URL, HTTP Method)를
+- [x] AOP 추가하기
+  - [x] 모든 API(Controller)가 호출될 때, Request 정보(Request URL, HTTP Method)를
     @Slf4J Logback 라이브러리를  활용하여 Log로 출력해주세요.
-  - [ ] 컨트롤러 마다 로그를 출력하는 코드를 추가하는것이 아닌, AOP로 구현해야만 합니다.
+  - [x] 컨트롤러 마다 로그를 출력하는 코드를 추가하는것이 아닌, AOP로 구현해야만 합니다.
 
 - [ ] DTO, Entity Test 추가하기
   - [ ] `@Test` 를 사용해서 DTO 와 Entity Test 를 추가합니다
