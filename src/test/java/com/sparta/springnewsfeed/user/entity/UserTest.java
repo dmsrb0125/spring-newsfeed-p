@@ -105,6 +105,30 @@ class UserTest {
         assertTrue(violations.stream().anyMatch(v -> v.getMessage().contains("must be a well-formed email address")));
     }
 
+    @Test
+    @DisplayName("Getter, Setter 메서드 테스트")
+    public void testGetterSetter() {
+        // given
+        User user = new User();
+        user.setUserId("validUser123");
+        user.setPassword("Valid@1234");
+        user.setEmail("valid@example.com");
+        user.setName("홍길동");
+        user.setIntroduction("동해번쩍 서해번쩍.");
+        user.setPictureURL("http://example.com/pic.jpg");
+        user.setStatus(UserStatusEnum.UNVERIFIED);
+        user.setRefreshToken("some-refresh-token");
+
+        // when & then
+        assertEquals("validUser123", user.getUserId());
+        assertEquals("Valid@1234", user.getPassword());
+        assertEquals("valid@example.com", user.getEmail());
+        assertEquals("홍길동", user.getName());
+        assertEquals("동해번쩍 서해번쩍.", user.getIntroduction());
+        assertEquals("http://example.com/pic.jpg", user.getPictureURL());
+        assertEquals(UserStatusEnum.UNVERIFIED, user.getStatus());
+        assertEquals("some-refresh-token", user.getRefreshToken());
+    }
 
 
 
