@@ -53,7 +53,7 @@ Controller, Service, Entity, DTO 레이어에 맞는 단위 테스트 작성하�
 - `assert` 사용
 
 ### Entity Test
-- 엔티티가 실제 데이터베이스에 올바르게 `매핑되어 저장`되는지 확인
+- 엔티티가 실제 데이터베이스에 올바르게 `저장`되는지 확인
 - 엔티티의 제약 조건 테스트
 - Getter, Setter 메서드 테스트
 - equals(), hashCode(), toString() 메서드 테스트
