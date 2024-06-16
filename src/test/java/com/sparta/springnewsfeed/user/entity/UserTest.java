@@ -130,6 +130,27 @@ class UserTest {
         assertEquals("some-refresh-token", user.getRefreshToken());
     }
 
+    @Test
+    @DisplayName("equals() 메서드 테스트")
+    public void testEquals() {
+        // given
+        User user1 = new User();
+        user1.setUserId("user1");
+        user1.setPassword("password1");
+        user1.setEmail("user1@example.com");
+        user1.setStatus(UserStatusEnum.UNVERIFIED);
+
+        User user2 = new User();
+        user2.setUserId("user1");
+        user2.setPassword("password1");
+        user2.setEmail("user1@example.com");
+        user2.setStatus(UserStatusEnum.UNVERIFIED);
+
+        // when & then
+        assertEquals(user1, user2);
+    }
+
+
 
 
 }
