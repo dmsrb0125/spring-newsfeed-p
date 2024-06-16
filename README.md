@@ -48,7 +48,9 @@ Controller, Service, Entity, DTO 레이어에 맞는 단위 테스트 작성하�
 
 
 ## 테스트코드 작성 방향성
-`JUnit`, `Mockito`. `JaCoCo` 사용
+- `JUnit`, `Mockito`. `JaCoCo` 사용
+- `given-when-then 전략` 사용
+- `assert` 사용
 
 ### Entity Test
 - 엔티티가 실제 데이터베이스에 올바르게 `매핑되어 저장`되는지 확인
