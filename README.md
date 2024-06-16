@@ -44,11 +44,11 @@ Controller, Service, Entity, DTO 레이어에 맞는 단위 테스트 작성하�
 ##  추가 구현 기능
 - [ ] JaCoCo 를 추가하여 프로젝트 코드 커버리지 (테스트 코드 적용률)를 측정 후
   퍼센티지를 60% 까지 올려주세요.
-- [ ]   Fixture Monkey 를 사용하여 손쉽게 테스트용 객체를 생성해보세요 
+- [ ]  Fixture Monkey 를 사용하여 손쉽게 테스트용 객체를 생성해보세요 
 
 
 ## 테스트코드 작성 방향성
-- `JUnit`, `Mockito`. `JaCoCo` 사용
+- `JUnit`, `Mockito`. `Fixture Monkey ` 사용
 - `given-when-then 전략` 사용
 - `assert` 사용
 
