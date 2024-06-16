@@ -170,6 +170,31 @@ class UserTest {
         assertEquals(user1.hashCode(), user2.hashCode());
     }
 
+    @Test
+    @DisplayName("toString() 메서드 테스트")
+    public void testToString() {
+        // given
+        User user = new User();
+        user.setUserId("validUser123");
+        user.setPassword("Valid@1234");
+        user.setEmail("valid@example.com");
+        user.setName("홍길동");
+        user.setIntroduction("동해번쩍 서해번쩍.");
+        user.setPictureURL("http://example.com/pic.jpg");
+        user.setStatus(UserStatusEnum.UNVERIFIED);
+        user.setRefreshToken("some-refresh-token");
 
+        // when
+        String userString = user.toString();
 
+        // then
+        assertTrue(userString.contains("validUser123"));
+        assertTrue(userString.contains("Valid@1234"));
+        assertTrue(userString.contains("valid@example.com"));
+        assertTrue(userString.contains("홍길동"));
+        assertTrue(userString.contains("동해번쩍 서해번쩍."));
+        assertTrue(userString.contains("http://example.com/pic.jpg"));
+        assertTrue(userString.contains("UNVERIFIED"));
+        assertTrue(userString.contains("some-refresh-token"));
+    }
 }
