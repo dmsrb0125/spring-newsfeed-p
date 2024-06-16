@@ -6,19 +6,8 @@ import com.sparta.springnewsfeed.follow.Follow;
 import com.sparta.springnewsfeed.like.CommentLike;
 import com.sparta.springnewsfeed.like.PostLike;
 import com.sparta.springnewsfeed.post.Post;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,16 +24,15 @@ import java.util.List;
 @Table(name = "user")
 public class User extends Timestamped {
 
-    // id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // 필드
+    @NotBlank(message = "User ID is mandatory")
     @Column(nullable = false, unique = true)
     private String userId;
 
-
+    @NotBlank(message = "Password is mandatory")
     @Column(nullable = false)
     private String password;
 
@@ -67,8 +55,6 @@ public class User extends Timestamped {
     @Column
     private String refreshToken;
 
-
-    // 엔티티 관계
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private EmailVerification emailVerification;
 
