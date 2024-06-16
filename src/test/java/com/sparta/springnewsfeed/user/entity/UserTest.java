@@ -131,7 +131,7 @@ class UserTest {
     }
 
     @Test
-    @DisplayName("equals() 메서드 테스트")
+    @DisplayName("equals() 메서드  테스트")
     public void testEquals() {
         // given
         User user1 = new User();
