@@ -56,7 +56,7 @@ class UserTest {
     public void testUserIdConstraint() {
         // given
         User user = new User();
-        user.setUserId(""); // Invalid userId
+        user.setUserId("");
         user.setPassword("Valid@1234");
         user.setEmail("valid@example.com");
         user.setStatus(UserStatusEnum.UNVERIFIED);
@@ -67,6 +67,24 @@ class UserTest {
         // then
         assertFalse(violations.isEmpty());
         assertTrue(violations.stream().anyMatch(v -> v.getMessage().equals("User ID is mandatory")));
+    }
+
+    @Test
+    @DisplayName("유저 비밀번호 데이터가 비어있을 경우 실패")
+    public void testPasswordConstraint() {
+        // given
+        User user = new User();
+        user.setUserId("validUser123");
+        user.setPassword("");
+        user.setEmail("valid@example.com");
+        user.setStatus(UserStatusEnum.UNVERIFIED);
+
+        // when
+        Set<ConstraintViolation<User>> violations = validator.validate(user);
+
+        // then
+        assertFalse(violations.isEmpty());
+        assertTrue(violations.stream().anyMatch(v -> v.getMessage().equals("Password is mandatory")));
     }
 
 
