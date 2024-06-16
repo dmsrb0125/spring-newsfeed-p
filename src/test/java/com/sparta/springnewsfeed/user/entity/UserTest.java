@@ -87,6 +87,24 @@ class UserTest {
         assertTrue(violations.stream().anyMatch(v -> v.getMessage().equals("Password is mandatory")));
     }
 
+    @Test
+    @DisplayName("유저 이메일 데이터가 비어있을 경우 실패")
+    public void testEmailConstraint() {
+        // given
+        User user = new User();
+        user.setUserId("validUser123");
+        user.setPassword("Valid@1234");
+        user.setEmail("");
+        user.setStatus(UserStatusEnum.UNVERIFIED);
+
+        // when
+        Set<ConstraintViolation<User>> violations = validator.validate(user);
+
+        // then
+        assertFalse(violations.isEmpty());
+        assertTrue(violations.stream().anyMatch(v -> v.getMessage().contains("must be a well-formed email address")));
+    }
+
 
 
 
