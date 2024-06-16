@@ -1,6 +1,7 @@
 package com.sparta.springnewsfeed.user.entity;
 
 import com.sparta.springnewsfeed.user.repository.UserRepository;
+import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
@@ -10,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -47,6 +50,26 @@ class UserTest {
         assertEquals("valid@example.com", savedUser.getEmail());
         assertEquals(UserStatusEnum.UNVERIFIED, savedUser.getStatus());
     }
+
+    @Test
+    @DisplayName("유저 아이디 데이터가 비어있을 경우 실패")
+    public void testUserIdConstraint() {
+        // given
+        User user = new User();
+        user.setUserId(""); // Invalid userId
+        user.setPassword("Valid@1234");
+        user.setEmail("valid@example.com");
+        user.setStatus(UserStatusEnum.UNVERIFIED);
+
+        // when
+        Set<ConstraintViolation<User>> violations = validator.validate(user);
+
+        // then
+        assertFalse(violations.isEmpty());
+        assertTrue(violations.stream().anyMatch(v -> v.getMessage().equals("User ID is mandatory")));
+    }
+
+
 
 
 }
