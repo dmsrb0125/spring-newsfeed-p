@@ -1,6 +1,6 @@
 package com.sparta.springnewsfeed.user.service;
 
-import com.sparta.springnewsfeed.auth.LoginRequestDto;
+
 import com.sparta.springnewsfeed.common.ResponseCode;
 import com.sparta.springnewsfeed.common.S3Uploader;
 import com.sparta.springnewsfeed.user.entity.UserStatusEnum;
