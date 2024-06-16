@@ -1,10 +1,14 @@
 package com.sparta.springnewsfeed.comment;
 
 import lombok.Getter;
+import lombok.Setter;
+import lombok.Value;
 
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
+@Value
 public class CommentResponseDto {
     private Long commentId; // 댓글 ID
     private String username;
