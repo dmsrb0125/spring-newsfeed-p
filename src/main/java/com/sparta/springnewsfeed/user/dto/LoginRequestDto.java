@@ -1,13 +1,9 @@
 package com.sparta.springnewsfeed.user.dto;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Value
 public class LoginRequestDto {
-    private String userId;
-    private String password;
+    String userId;
+    String password;
 }
