@@ -36,7 +36,9 @@ public class User extends Timestamped {
     @Column(nullable = false)
     private String password;
 
-    @Column
+
+    @NotBlank(message = "Email is mandatory")
+    @Column(nullable = false)
     private String email;
 
     @Column
