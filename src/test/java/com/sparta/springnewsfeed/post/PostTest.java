@@ -111,4 +111,24 @@ class PostTest {
         assertFalse(violations.isEmpty());
     }
 
+    @Test
+    @DisplayName("Getter, Setter 메서드 테스트")
+    public void testGetterSetter() {
+        // given
+        User user = new User();
+        user.setUserId("validUser123");
+        user.setPassword("Valid@1234");
+        user.setEmail("valid@example.com");
+        user.setStatus(UserStatusEnum.UNVERIFIED);
+
+        Post post = new Post();
+        post.setTitle("Valid Title");
+        post.setContent("Valid Content");
+        post.setUser(user);
+
+        // when & then
+        assertEquals("Valid Title", post.getTitle());
+        assertEquals("Valid Content", post.getContent());
+        assertEquals(user, post.getUser());
+    }
 }
