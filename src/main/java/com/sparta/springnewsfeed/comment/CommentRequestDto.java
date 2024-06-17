@@ -5,7 +5,11 @@ import lombok.Setter;
 import lombok.Value;
 
 
+import jakarta.validation.constraints.NotBlank;
+import lombok.Value;
+
 @Value
 public class CommentRequestDto {
-    private String commentContents;
+    @NotBlank(message = "댓글 내용은 필수 입력 값입니다.")
+    String commentContents;
 }
