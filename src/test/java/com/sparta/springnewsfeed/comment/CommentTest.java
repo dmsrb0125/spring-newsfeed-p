@@ -132,5 +132,33 @@ class CommentTest {
         assertEquals(post, comment.getPost());
     }
 
+    @Test
+    @DisplayName("equals() 메서드 테스트")
+    public void testEquals() {
+        // given
+        User user = new User();
+        user.setUserId("validUser123");
+        user.setPassword("Valid@1234");
+        user.setEmail("valid@example.com");
+        user.setStatus(UserStatusEnum.UNVERIFIED);
+
+        Post post = new Post();
+        post.setTitle("Valid Title");
+        post.setContent("Valid Content");
+        post.setUser(user);
+
+        Comment comment1 = new Comment();
+        comment1.setContent("This is a valid comment.");
+        comment1.setUser(user);
+        comment1.setPost(post);
+
+        Comment comment2 = new Comment();
+        comment2.setContent("This is a valid comment.");
+        comment2.setUser(user);
+        comment2.setPost(post);
+
+        // when & then
+        assertEquals(comment1, comment2);
+    }
 
 }
