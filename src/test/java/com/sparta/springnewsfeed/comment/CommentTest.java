@@ -106,5 +106,31 @@ class CommentTest {
         assertFalse(violations.isEmpty());
     }
 
+    @Test
+    @DisplayName("Getter, Setter 메서드 테스트")
+    public void testGetterSetter() {
+        // given
+        User user = new User();
+        user.setUserId("validUser123");
+        user.setPassword("Valid@1234");
+        user.setEmail("valid@example.com");
+        user.setStatus(UserStatusEnum.UNVERIFIED);
+
+        Post post = new Post();
+        post.setTitle("Valid Title");
+        post.setContent("Valid Content");
+        post.setUser(user);
+
+        Comment comment = new Comment();
+        comment.setContent("This is a valid comment.");
+        comment.setUser(user);
+        comment.setPost(post);
+
+        // when & then
+        assertEquals("This is a valid comment.", comment.getContent());
+        assertEquals(user, comment.getUser());
+        assertEquals(post, comment.getPost());
+    }
+
 
 }
