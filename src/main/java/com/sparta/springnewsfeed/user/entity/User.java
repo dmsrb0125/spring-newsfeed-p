@@ -77,4 +77,10 @@ public class User extends Timestamped {
 
     @OneToMany(mappedBy = "followed", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Follow> followers = new ArrayList<>();
+
+    public User(String userId, String password, String email) {
+        this.userId = userId;
+        this.password = password;
+        this.email = email;
+    }
 }
