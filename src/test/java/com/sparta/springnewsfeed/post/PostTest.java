@@ -4,6 +4,7 @@ import com.sparta.springnewsfeed.user.entity.User;
 
 import com.sparta.springnewsfeed.user.entity.UserStatusEnum;
 import com.sparta.springnewsfeed.user.repository.UserRepository;
+import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
@@ -14,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -60,6 +63,29 @@ class PostTest {
         assertEquals("Valid Title", savedPost.getTitle());
         assertEquals("Valid Content", savedPost.getContent());
         assertEquals(savedUser, savedPost.getUser());
+    }
+
+    @Test
+    @DisplayName("게시물 제목이 비어있을 경우 실패")
+    public void testTitleConstraint() {
+        // given
+        User user = new User();
+        user.setUserId("validUser123");
+        user.setPassword("Valid@1234");
+        user.setEmail("valid@example.com");
+        user.setStatus(UserStatusEnum.UNVERIFIED);
+        User savedUser = userRepository.save(user);
+
+        Post post = new Post();
+        post.setTitle("");
+        post.setContent("Valid content");
+        post.setUser(savedUser);
+
+        // when
+        Set<ConstraintViolation<Post>> violations = validator.validate(post);
+
+        // then
+        assertFalse(violations.isEmpty());
     }
 
 
