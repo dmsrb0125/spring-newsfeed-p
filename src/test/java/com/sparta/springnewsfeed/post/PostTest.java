@@ -88,5 +88,27 @@ class PostTest {
         assertFalse(violations.isEmpty());
     }
 
+    @Test
+    @DisplayName("게시물 내용이 비어있을 경우 실패")
+    public void testContentConstraint() {
+        // given
+        User user = new User();
+        user.setUserId("validUser123");
+        user.setPassword("Valid@1234");
+        user.setEmail("valid@example.com");
+        user.setStatus(UserStatusEnum.UNVERIFIED);
+        User savedUser = userRepository.save(user);
+
+        Post post = new Post();
+        post.setTitle("Valid title");
+        post.setContent("");
+        post.setUser(savedUser);
+
+        // when
+        Set<ConstraintViolation<Post>> violations = validator.validate(post);
+
+        // then
+        assertFalse(violations.isEmpty());
+    }
 
 }
