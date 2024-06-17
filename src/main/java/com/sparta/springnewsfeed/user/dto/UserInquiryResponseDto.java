@@ -1,12 +1,12 @@
 package com.sparta.springnewsfeed.user.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.Value;
+import lombok.*;
 
 
 @Getter
 @Setter
+@EqualsAndHashCode
+@ToString
 public class UserInquiryResponseDto {
 
     private String userId;
