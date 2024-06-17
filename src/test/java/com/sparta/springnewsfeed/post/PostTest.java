@@ -156,4 +156,48 @@ class PostTest {
         // when & then
         assertEquals(post1, post2);
     }
+
+
+    @Test
+    @DisplayName("hashCode() 메서드 테스트")
+    public void testHashCode() {
+        // given
+        User user = new User();
+        user.setUserId("validUser123");
+        user.setPassword("Valid@1234");
+        user.setEmail("valid@example.com");
+        user.setStatus(UserStatusEnum.UNVERIFIED);
+
+        Post post1 = new Post();
+        post1.setTitle("Valid Title");
+        post1.setContent("Valid Content");
+        post1.setUser(user);
+
+        Post post2 = new Post();
+        post2.setTitle("Valid Title");
+        post2.setContent("Valid Content");
+        post2.setUser(user);
+
+        // when & then
+        assertEquals(post1.hashCode(), post2.hashCode());
+    }
+
+    @Test
+    @DisplayName("toString() 메서드 테스트")
+    public void testToString() {
+        // given
+        User user = new User();
+        user.setUserId("validUser123");
+        user.setPassword("Valid@1234");
+        user.setEmail("valid@example.com");
+        user.setStatus(UserStatusEnum.UNVERIFIED);
+
+        Post post = new Post();
+        post.setTitle("Valid Title");
+        post.setContent("Valid Content");
+        post.setUser(user);
+
+        // when & then
+        assertNotNull(post.toString());
+    }
 }
