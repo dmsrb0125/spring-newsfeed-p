@@ -5,6 +5,7 @@ import com.sparta.springnewsfeed.post.PostRepository;
 import com.sparta.springnewsfeed.user.entity.User;
 import com.sparta.springnewsfeed.user.entity.UserStatusEnum;
 import com.sparta.springnewsfeed.user.repository.UserRepository;
+import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
@@ -15,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -72,6 +75,35 @@ class CommentTest {
         assertEquals("This is a valid comment.", savedComment.getContent());
         assertEquals(savedUser, savedComment.getUser());
         assertEquals(savedPost, savedComment.getPost());
+    }
+
+    @Test
+    @DisplayName("댓글 내용이 비어있을 경우 실패")
+    public void testContentConstraint() {
+        // given
+        User user = new User();
+        user.setUserId("validUser123");
+        user.setPassword("Valid@1234");
+        user.setEmail("valid@example.com");
+        user.setStatus(UserStatusEnum.UNVERIFIED);
+        User savedUser = userRepository.save(user);
+
+        Post post = new Post();
+        post.setTitle("Valid title");
+        post.setContent("Valid content");
+        post.setUser(savedUser);
+        Post savedPost = postRepository.save(post);
+
+        Comment comment = new Comment();
+        comment.setContent(""); // Invalid content
+        comment.setUser(savedUser);
+        comment.setPost(savedPost);
+
+        // when
+        Set<ConstraintViolation<Comment>> violations = validator.validate(comment);
+
+        // then
+        assertFalse(violations.isEmpty());
     }
 
 
