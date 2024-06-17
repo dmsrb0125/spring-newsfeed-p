@@ -9,10 +9,9 @@ import lombok.Value;
 
 @Value
 public class PostRequest {
-
-    @NotBlank
+    @NotBlank(message = "Title is mandatory")
     private String title;
 
-    @NotNull
+    @NotNull(message = "Content is mandatory")
     private String content;
 }
