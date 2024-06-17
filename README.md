@@ -25,10 +25,10 @@ Controller, Service, Entity, DTO 레이어에 맞는 단위 테스트 작성하�
     @Slf4J Logback 라이브러리를  활용하여 Log로 출력해주세요.
   - [x] 컨트롤러 마다 로그를 출력하는 코드를 추가하는것이 아닌, AOP로 구현해야만 합니다.
 
-- [ ] DTO, Entity Test 추가하기
-  - [ ] `@Test` 를 사용해서 DTO 와 Entity Test 를 추가합니다
-  - [ ] User, Post, Comment, DTO 에 존재하는 메서드들에 대해서 “단위 테스트” 를 추가합니다.
-  - [ ] 특정 상황에 예외가 정상적으로 발생하고 있는지도 테스트 합니다.
+- [x] DTO, Entity Test 추가하기
+  - [x] `@Test` 를 사용해서 DTO 와 Entity Test 를 추가합니다
+  - [x] User, Post, Comment, DTO 에 존재하는 메서드들에 대해서 “단위 테스트” 를 추가합니다.
+  - [x] 특정 상황에 예외가 정상적으로 발생하고 있는지도 테스트 합니다.
   
 - [ ] Controller Test 추가하기 
   - [ ] `@WebMvcTest` 를 사용하여 Controller Test 를 추가합니다.
