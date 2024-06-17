@@ -6,8 +6,6 @@ import lombok.Setter;
 import lombok.Value;
 
 @Value
-@Getter
-@Setter
 public class UpdateProfileRequestDto {
 
     @Size(max = 10, message = "이름은 최대 10글자까지 입력 가능합니다.")

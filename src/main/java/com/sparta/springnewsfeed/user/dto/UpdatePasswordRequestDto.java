@@ -8,8 +8,6 @@ import lombok.Setter;
 import lombok.Value;
 
 @Value
-@Getter
-@Setter
 public class UpdatePasswordRequestDto {
 
     @NotBlank(message = "현재 비밀번호는 필수 입력 값입니다.")

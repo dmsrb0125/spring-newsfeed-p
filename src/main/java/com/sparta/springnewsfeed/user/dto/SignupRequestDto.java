@@ -9,8 +9,6 @@ import lombok.Setter;
 import lombok.Value;
 
 @Value
-@Getter
-@Setter
 public class SignupRequestDto {
 
     @NotBlank(message = "사용자 ID는 필수 입력 값입니다.")
