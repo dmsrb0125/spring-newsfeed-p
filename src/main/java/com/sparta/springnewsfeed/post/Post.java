@@ -17,13 +17,15 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
+@ToString(callSuper = true)
 @Entity
 @Table(name = "post")
 public class Post extends Timestamped {
@@ -32,9 +34,11 @@ public class Post extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Title is mandatory")
     @Column(nullable = false, length = 50)
     private String title;
 
+    @NotBlank(message = "Content is mandatory")
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 

@@ -4,13 +4,14 @@ import com.sparta.springnewsfeed.common.Timestamped;
 import com.sparta.springnewsfeed.post.Post;
 import com.sparta.springnewsfeed.user.entity.User;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
+@ToString(callSuper = true)
 @Entity
 @Table(name = "comment")
 public class Comment extends Timestamped {
@@ -18,6 +19,7 @@ public class Comment extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;
 
+    @NotBlank(message = "Content is mandatory")
     @Column(nullable = false)
     private String content;
 
